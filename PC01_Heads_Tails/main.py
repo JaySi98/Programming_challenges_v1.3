@@ -18,9 +18,7 @@ def get_arg(argv):
                 return num
         return num
 
-
-if __name__ == '__main__':
-    num = int(get_arg(sys.argv[1:]))
+def flip_coin(num):
     heads, tails = 0, 0
 
     for i in range(num):
@@ -29,6 +27,11 @@ if __name__ == '__main__':
             heads += 1
         else:
             tails += 1
+    return heads, tails
+
+if __name__ == '__main__':
+    num = int(get_arg(sys.argv[1:]))
+    heads, tails = flip_coin(num)
 
     print('Number of coin flips: ', num)
     print('Number of heads: ', heads)
