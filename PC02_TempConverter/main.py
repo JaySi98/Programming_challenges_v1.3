@@ -10,9 +10,6 @@ def get_arg(argv):
     except getopt.GetoptError:
       print('invalid arguments')
       sys.exit()
-    except len(argv) != 3:
-        print('invalid number of arguments')
-        sys.exit()
     else:
         for opt, arg in opts:
             if opt in ('-f', '-c', '-k'):
