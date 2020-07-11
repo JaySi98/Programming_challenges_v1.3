@@ -1,41 +1,21 @@
-from datetime import date
-import getopt
+import argparse
+import datetime as dt
 import sys
 
-
-def get_arg(argv):
-    day = 0
-    month = 0
-    year = 0
-
-    try:
-      opts, args = getopt.getopt(argv,'d:m:y:')
-    except getopt.GetoptError:
-      print('invalid arguments')
-      sys.exit()
-    else:
-        for opt, arg in opts:
-            if opt == '-d':
-                day = arg
-            elif opt == '-m':
-                month = arg
-            elif opt == '-y':
-                year = arg
-            else:
-                print('invalid arguments')
-                sys.exit()
-        return int(day), int(month), int(year)
-
-
-def check_input(day, month, year):
-    if not (0 > day >= 31):
-        print('e')
-
-
+# MAIN --------------------------------------------------------------------- #
 if __name__ == '__main__':
-    day, month, year = get_arg(sys.argv[1:])
-    check_input(day, month, year)
+    # parsing arguments
+    parser = argparse.ArgumentParser(
+        description='Calculate your age in seconds')
+    parser.add_argument('-d','--date', type=dt.date.fromisoformat,
+        help='date of your birthday YYYY-MM-DD')
+    args = parser.parse_args()
+    
+    # getting todays date
+    today = dt.date.today()
+    
+    # calcuating difference in seconds
+    diff = (today - args.date).days * 86400
 
-    now = date.today()
-
-    print(day, month, year)
+    # printing the result 
+    print('You are over ', diff ,' seconds old.')
