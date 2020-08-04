@@ -1,14 +1,22 @@
 # SETTINGS ----------------------------------------------------------------- #
 class Settings():
     def __init__(self):
-        #number of pieces / lives
-        self.number_pieces = 10
-
-        #screen settings
+        # OTHERS ----------------------------------------------------------- #
+        # screen dimensions
         self.screen_dim = (1000, 700)
         # background path
         self.background_path = "textures/back.bmp"
-        
+
+        # BUTTONS ---------------------------------------------------------- #
+        # buttons width
+        self.button_width = 80
+        # number of letters that can be placed using loop
+        self.buttons_num = 24
+        self.buttons_chars = 'abcdefghijklmnopqrstuvwxyz'
+
+        # HANGMAN ---------------------------------------------------------- #
+        #number of pieces / lives
+        self.pieces_num = 10
         # hangman sprites paths
         self.piece_path = [ "textures/base.bmp",
                             "textures/vertical.bmp",
@@ -30,5 +38,4 @@ class Settings():
                                 [207,336],
                                 [325,334],
                                 [244,511],
-                                [285,511] ]
-        
+                                [285,511] ] 

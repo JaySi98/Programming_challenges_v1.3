@@ -11,7 +11,7 @@ class Piece(Sprite):
         self.rect.x, self.rect.y = settings.piece_position[number]
 
         self.number = number
-        self.visible = False
+        self.visible = True
 
     def set_visible(self):
         self.visible = True

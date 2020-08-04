@@ -10,23 +10,24 @@ from Settings import Settings
 # MAIN --------------------------------------------------------------------- #
 if __name__ == '__main__':
     # INITIALIZATION ------------------------------------------------------- #
-    #settings initialization
+    # settings initialization
     settings = Settings()
 
-    #screen initialization
+    # screen initialization
     pygame.init()
     window = pygame.display.set_mode(settings.screen_dim)
     pygame.display.set_caption('Hangman')
 
-    #loading background texture
+    # loading background texture
     background = Background(settings)
 
-    #loading hangmans textures 
+    # loading hangmans textures 
     pieces = []
     gl.load_pieces(settings, pieces)
 
-    #loading letters textures
-    
+    # loading letters textures
+    buttons = [] 
+    gl.load_buttons(settings, buttons)
 
     # GAME VARIABLES ------------------------------------------------------- # 
     counter = 0 # number missed letters, when it reaches 10, game ends

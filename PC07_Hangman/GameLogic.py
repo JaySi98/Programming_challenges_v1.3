@@ -2,6 +2,7 @@ import sys
 import pygame
 import Piece 
 import Settings
+import Button
 
 #CHECKING EVENTS ----------------------------------------------------------- #
 #checks game events such ass closing the game
@@ -25,6 +26,10 @@ def update_window(window, background, pieces):
 
 #LOADING HANGMANS PARTS
 def load_pieces(settings, pieces):
-    for i in range(settings.number_pieces):
+    for i in range(settings.pieces_num):
         new_piece = Piece.Piece(settings, i)
         pieces.append(new_piece)
+
+#LOADING BUTTONS
+def load_buttons(settings, buttons):
+    for i in range(settings.buttons_num)
