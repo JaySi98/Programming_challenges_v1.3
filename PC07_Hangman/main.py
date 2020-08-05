@@ -29,13 +29,14 @@ if __name__ == '__main__':
     buttons = [] 
     gl.load_buttons(settings, buttons)
 
+
     # GAME VARIABLES ------------------------------------------------------- # 
     counter = 0 # number missed letters, when it reaches 10, game ends
 
 
     # MAIN LOOP ------------------------------------------------------------ #
     while True:
-        #CHECKING EVENTS --------------------------------------------------- #
+        # checking if mouse was pressed
         for event in pygame.event.get():
             gl.check_events(event)
 

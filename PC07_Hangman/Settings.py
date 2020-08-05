@@ -9,10 +9,12 @@ class Settings():
 
         # BUTTONS ---------------------------------------------------------- #
         # buttons width
-        self.button_width = 80
+        self.button_width = 60
         # number of letters that can be placed using loop
         self.buttons_num = 24
         self.buttons_chars = 'abcdefghijklmnopqrstuvwxyz'
+        #starting position for placing rects
+        self.button_spos = (506, 214)
 
         # HANGMAN ---------------------------------------------------------- #
         #number of pieces / lives
