@@ -39,8 +39,13 @@ def check_events(event, buttons):
 
 
 # AUXILIARY FUNCTIONS ------------------------------------------------------ #
-def check_button_pressed(pos, buttons):
-    
+def check_button_pressed(positon, buttons):
+    x, y = positon
+    width = buttons[0].rect.width
+    for i in range(len(buttons)):
+        bx, by = buttons[i].rect.x, buttons[i].rect.y
+        if (bx <= x <= bx + width) and (by <= y <= by + width):
+            pass
 
 # DRAWING ------------------------------------------------------------------ #
 # refreshes the window

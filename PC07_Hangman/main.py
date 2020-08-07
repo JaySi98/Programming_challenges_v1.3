@@ -38,7 +38,7 @@ if __name__ == '__main__':
     while True:
         # checking if mouse was pressed
         for event in pygame.event.get():
-            gl.check_events(event)
+            gl.check_events(event, buttons)
 
         #updating window with new matrix
         gl.update_window(window, background, pieces)
