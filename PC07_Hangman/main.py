@@ -1,12 +1,11 @@
 import random
 import pygame
-
 #
 import GameLogic as gl
 from Background import Background
 from Piece import Piece
 from Settings import Settings
-
+import Text
 
 # MAIN --------------------------------------------------------------------- #
 if __name__ == '__main__':
@@ -30,11 +29,16 @@ if __name__ == '__main__':
     buttons = [] 
     gl.load_buttons(settings, buttons)
 
+    # creating answer to find
+    # selecting random answer from txt file
+    answer = gl.select_answer(settings)
+    #creating text to be displayed
+    text = Text.Text(settings, answer)
+    print(text.answer, text.show)
+    print(text.text_rect.x, text.text_rect.y)
 
     # GAME VARIABLES ------------------------------------------------------- # 
     counter = 0     # number missed letters, when it reaches 10, game ends
-    #randomly selecting random answer
-    answer = gl.select_answer(settings)
 
 
     # MAIN LOOP ------------------------------------------------------------ #

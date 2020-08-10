@@ -16,8 +16,14 @@ class Settings():
         #starting position for placing rects
         self.button_spos = (506, 214)
 
-        # ANSWERS ---------------------------------------------------------- #
-        self.answers_size = 1525
+        # ANSWER ----------------------------------------------------------- #
+        self.font_path = 'resources/font.TTF'
+        self.font_size = 20 #na oko
+        self.lines_size = 1525
+        self.letter_sx = 57
+        self.letter_sy = 35
+        self.letter_width = 44
+        #self.letter_hight = 25
 
         # HANGMAN ---------------------------------------------------------- #
         #number of pieces / lives

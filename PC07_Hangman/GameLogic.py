@@ -5,6 +5,7 @@ import random
 import Piece 
 import Settings
 import Button
+import Text
 
 # LOADING STUFF ------------------------------------------------------------ #
 # LOADING HANGMANS PARTS
@@ -30,7 +31,7 @@ def load_buttons(settings, buttons):
 
 # returns randomn answer 
 def select_answer(settings):
-    num = random.randint(1, settings.answers_size)
+    num = random.randint(1, settings.lines_size)
     file = open("resources/answers.txt", "r")
     
     for i, line in enumerate(file):
