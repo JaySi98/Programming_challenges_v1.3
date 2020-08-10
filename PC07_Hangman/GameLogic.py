@@ -1,5 +1,7 @@
 import sys
 import pygame
+import random
+#
 import Piece 
 import Settings
 import Button
@@ -26,6 +28,16 @@ def load_buttons(settings, buttons):
     buttons.append(button_y)
     buttons.append(button_z)
 
+# returns randomn answer 
+def select_answer(settings):
+    num = random.randint(1, settings.answers_size)
+    file = open("resources/answers.txt", "r")
+    
+    for i, line in enumerate(file):
+        if i == num:
+           file.close() 
+           return line[:-1]
+
 
 # CHECKING EVENTS ---------------------------------------------------------- #
 # checks game events such as closing the game
@@ -34,9 +46,9 @@ def check_events(event, buttons):
         pygame.quit()
         sys.exit()
     elif event.type == pygame.MOUSEBUTTONUP:
-      pos = pygame.mouse.get_pos()
-      check_button_pressed(pos, buttons)
-
+        pos = pygame.mouse.get_pos()
+        check_button_pressed(pos, buttons)
+      
 
 # AUXILIARY FUNCTIONS ------------------------------------------------------ #
 def check_button_pressed(positon, buttons):
@@ -45,7 +57,8 @@ def check_button_pressed(positon, buttons):
     for i in range(len(buttons)):
         bx, by = buttons[i].rect.x, buttons[i].rect.y
         if (bx <= x <= bx + width) and (by <= y <= by + width):
-            pass
+            pass#print(buttons[i].character)
+
 
 # DRAWING ------------------------------------------------------------------ #
 # refreshes the window

@@ -5,7 +5,7 @@ class Settings():
         # screen dimensions
         self.screen_dim = (1000, 700)
         # background path
-        self.background_path = "textures/back.bmp"
+        self.background_path = "resources/back.bmp"
 
         # BUTTONS ---------------------------------------------------------- #
         # buttons width
@@ -16,20 +16,23 @@ class Settings():
         #starting position for placing rects
         self.button_spos = (506, 214)
 
+        # ANSWERS ---------------------------------------------------------- #
+        self.answers_size = 1525
+
         # HANGMAN ---------------------------------------------------------- #
         #number of pieces / lives
         self.pieces_num = 10
         # hangman sprites paths
-        self.piece_path = [ "textures/base.bmp",
-                            "textures/vertical.bmp",
-                            "textures/horizontal.bmp",
-                            "textures/rope.bmp",
-                            "textures/head.bmp",
-                            "textures/body.bmp",
-                            "textures/left_arm.bmp",
-                            "textures/right_arm.bmp",
-                            "textures/left_leg.bmp",
-                            "textures/right_leg.bmp" ]
+        self.piece_path = [ "resources/base.bmp",
+                            "resources/vertical.bmp",
+                            "resources/horizontal.bmp",
+                            "resources/rope.bmp",
+                            "resources/head.bmp",
+                            "resources/body.bmp",
+                            "resources/left_arm.bmp",
+                            "resources/right_arm.bmp",
+                            "resources/left_leg.bmp",
+                            "resources/right_leg.bmp" ]
         # hangman sprites positions
         self.piece_position = [ [13,614],
                                 [45,159],

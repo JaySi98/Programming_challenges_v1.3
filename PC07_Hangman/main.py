@@ -1,5 +1,6 @@
 import random
 import pygame
+
 #
 import GameLogic as gl
 from Background import Background
@@ -31,7 +32,9 @@ if __name__ == '__main__':
 
 
     # GAME VARIABLES ------------------------------------------------------- # 
-    counter = 0 # number missed letters, when it reaches 10, game ends
+    counter = 0     # number missed letters, when it reaches 10, game ends
+    #randomly selecting random answer
+    answer = gl.select_answer(settings)
 
 
     # MAIN LOOP ------------------------------------------------------------ #
