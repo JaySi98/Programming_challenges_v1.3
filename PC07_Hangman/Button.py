@@ -9,6 +9,10 @@ class Button():
         x, y = position
         self.rect = pygame.Rect(x, y, width, width)
         self.character = settings.buttons_chars[number]
-    
+        self.pressed = False
+
     def get_character(self):
         return self.character
+    
+    def set_pressed(self):
+        self.pressed = True

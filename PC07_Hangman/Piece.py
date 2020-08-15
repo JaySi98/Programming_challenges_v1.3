@@ -9,9 +9,3 @@ class Piece(Sprite):
         self.texture = pygame.image.load(settings.piece_path[number])
         self.rect = self.texture.get_rect()
         self.rect.x, self.rect.y = settings.piece_position[number]
-
-        self.number = number
-        self.visible = True
-
-    def set_visible(self):
-        self.visible = True

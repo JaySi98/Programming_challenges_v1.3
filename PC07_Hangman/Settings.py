@@ -2,6 +2,7 @@
 class Settings():
     def __init__(self):
         # OTHERS ----------------------------------------------------------- #
+        self.game_active = True
         # screen dimensions
         self.screen_dim = (1000, 700)
         # background path
@@ -18,10 +19,10 @@ class Settings():
 
         # ANSWER ----------------------------------------------------------- #
         self.font_path = 'resources/font.TTF'
-        self.font_size = 20 #na oko
+        self.font_size = 40 #na oko
         self.lines_size = 1525
         self.letter_sx = 57
-        self.letter_sy = 35
+        self.letter_sy = 25
         self.letter_width = 44
         #self.letter_hight = 25
 
