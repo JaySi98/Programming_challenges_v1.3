@@ -12,7 +12,7 @@ class Text():
             self.characters = self.characters + '*'
         #
         self.font = pygame.font.Font(settings.font_path, settings.font_size)
-        self.text = self.font.render(str(self.characters), True, black)
+        self.text = self.font.render(str(self.characters), True, white)
         self.text_rect = self.text.get_rect()
         #
         start = int((20 - len(answer)) / 2) + 1
@@ -29,4 +29,4 @@ class Text():
             else:
                 new_text += '*'
         self.characters = new_text
-        self.text = self.font.render(self.characters, True, black)
+        self.text = self.font.render(self.characters, True, white)
