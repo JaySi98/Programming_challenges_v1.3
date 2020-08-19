@@ -1,1 +1,2 @@
-*/_pycache/
+*.pyc
+PC07_Hangman/textures/*$
