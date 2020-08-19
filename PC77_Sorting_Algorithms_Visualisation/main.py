@@ -9,7 +9,7 @@ from settings import Settings
 # MAIN --------------------------------------------------------------------- #
 if __name__ == '__main__':
     # INITIALIZATION ------------------------------------------------------- #
-    # settings - all the 
+    # settings - all the parameters
     settings = Settings()
 
     # window
@@ -20,6 +20,9 @@ if __name__ == '__main__':
     # background texture
     background = Background(settings)
 
+    # lines that will be sorted
+    lines = gl.create_lines(settings)
+    print(lines[0].x)
 
     # MAIN LOOP ------------------------------------------------------------ #
     while True:
@@ -28,4 +31,4 @@ if __name__ == '__main__':
             gl.check_events(event)
 
             # refreshing window 
-            gl.update_window(window, background)
+            gl.update_window(window, settings, background, lines)
