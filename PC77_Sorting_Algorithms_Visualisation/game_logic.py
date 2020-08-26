@@ -15,6 +15,7 @@ def create_lines(settings):
         new_line = Line((x, sy), init_height+i, color) 
         lines.append(new_line)
     return lines
+    
 
 # CHECKING EVENTS ---------------------------------------------------------- #
 # checks game events such as closing the game

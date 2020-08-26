@@ -3,12 +3,14 @@ import pygame
 #
 from background import Background
 import game_logic as gl
+import algorithms as alg
 from settings import Settings
 
 
 # MAIN --------------------------------------------------------------------- #
 if __name__ == '__main__':
     # INITIALIZATION ------------------------------------------------------- #
+
     # settings - all the parameters
     settings = Settings()
 
@@ -22,7 +24,8 @@ if __name__ == '__main__':
 
     # lines that will be sorted
     lines = gl.create_lines(settings)
-    print(lines[0].x)
+    alg.mix_lines(lines)
+    alg.selection_sort(lines)
 
     # MAIN LOOP ------------------------------------------------------------ #
     while True:
