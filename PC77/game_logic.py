@@ -3,6 +3,7 @@ import pygame
 import random
 import argparse
 #    
+import settings
 
 # GET_ARGUMENT ---------------------------------------------------------- #
 # chekcs given arguments and returns the name of the selected algorithm
@@ -40,16 +41,15 @@ def check_events(event):
 # refreshes the window
 def update_window(window, settings, arr):
     # black background
-    window.fill(pygame.Color("black"))
+    window.fill(settings.black)
 
     # array values as white lines
     dimensions = settings.window_dim
-    white = pygame.Color("white")
     for i in range(len(arr)):
         x = i*2
         y1 = dimensions[1] 
         y2 = dimensions[1] - arr[i]
-        pygame.draw.line(window, white, (x,y1), (x,y2), 2)
+        pygame.draw.line(window, settings.white, (x,y1), (x,y2), 2)
 
     # flipping the window
     pygame.display.flip()
