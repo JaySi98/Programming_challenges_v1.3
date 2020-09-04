@@ -24,9 +24,11 @@ def get_argument(argv, settings):
 # CREATE_ARRAY ---------------------------------------------------------- #
 # fills the array with random colors(r,g,b)
 def create_array(settings):
-    arr = [(random.randint(0,255), random.randint(0,255), random.randint(0,255)) 
-            for i in range(settings.arr_len)]
-    random.shuffle(arr)
+    arr = []
+    for i in range(settings.arr_len):
+        color = settings.colors[i%len(settings.colors)]
+        arr.append([i,color])
+    random.shuffle(arr) 
     return arr
 
 # CHECK_EVENTS ---------------------------------------------------------- #
@@ -48,8 +50,8 @@ def update_window(window, settings, arr):
     for i in range(len(arr)):
         x = i*2
         y1 = dimensions[1] 
-        y2 = 0 #dimensions[1] - arr[i]
-        pygame.draw.line(window, arr[i], (x,y1), (x,y2), 2)
+        y2 = dimensions[1] - arr[i][0]
+        pygame.draw.line(window, arr[i][1], (x,y1), (x,y2), 2)
 
     # flipping the window
     pygame.display.flip()

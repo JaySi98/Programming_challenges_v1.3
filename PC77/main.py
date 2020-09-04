@@ -8,9 +8,7 @@ from settings import Settings
 
 '''
 CO MOZNA POPRAWIC 
-- zamiast po wielkosci to po kolorze 
-    http://www.niwa.nu/2013/05/math-behind-colorspace-conversions-rgb-hsl/
-    https://stackoverflow.com/questions/23090019/fastest-formula-to-get-hue-from-rgb
+- sortowanie po wielkosci ale kolorowe słupki
 - wiecej agrumentow(ilosc linii)
 - wiecej algorytmow
 '''
@@ -38,21 +36,6 @@ if __name__ == '__main__':
     # ANIMATION ------------------------------------------------------------ #
     call = algorithm(window, settings, arr)
 
-    # MAIN LOOP ------------------------------------------------------------ #
-    while True:
-        # checking game events
-        for event in pygame.event.get():
-            gl.check_events(event)
-        
-        # refreshing window 
-        gl.update_window(window, settings, arr)
-
-
-
-'''
-    # ANIMATION ------------------------------------------------------------ #
-    call = algorithm(window, settings, arr)
-
 
     # MAIN LOOP ------------------------------------------------------------ #
     while True:
@@ -62,4 +45,3 @@ if __name__ == '__main__':
         
         # refreshing window 
         gl.update_window(window, settings, arr)
-'''

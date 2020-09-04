@@ -14,7 +14,12 @@ class Settings():
         # ARRAY
         self.arr_len = 600
         #colors
+        self.colors = [ (255,0,0),
+                        (255,0,255),
+                        (0,0,255),
+                        (0,255,255),
+                        (0,255,0),
+                        (255,255,0)]
+
         self.black = (0,0,0)#pygame.Color("black")
         self.white = (255,255,255)#pygame.Color("white")
-        self.red = (255,0,0)#pygame.Color("red")
-        self.green = (0,255,0)#pygame.Color("green")
