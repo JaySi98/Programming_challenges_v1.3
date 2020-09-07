@@ -14,21 +14,23 @@ def get_argument(argv, settings):
     else:
         parser = argparse.ArgumentParser(description='Sorting Algorithms Visualization')
         parser.add_argument('-a','--alg', type=str, help='algorithms name')
+        parser.add_argument('-n','--num', type=int, help='lenght of the array')
         args = parser.parse_args()
-        if args.alg in settings.alg_list:
-            return args.alg
+        if (args.alg in settings.alg_list 
+        and (settings.lenght_bounds[0] <= args.num <= settings.lenght_bounds[1])):
+            return args.alg, args.num
         else:
-            print('Error, incorect argument')
+            print('Error, incorect arguments')
             sys.exit()
 
 # CREATE_ARRAY ---------------------------------------------------------- #
 # fills the array with random colors(r,g,b)
-def create_array(settings):
+def create_array(settings, lenght):
     arr = []
-    for i in range(settings.arr_len):
+    for i in range(lenght):
         color = settings.colors[i%len(settings.colors)]
-        arr.append([i,color])
-    random.shuffle(arr) 
+        arr.append([i, color])
+    #random.shuffle(arr) 
     return arr
 
 # CHECK_EVENTS ---------------------------------------------------------- #
@@ -48,10 +50,10 @@ def update_window(window, settings, arr):
     # array values as white lines
     dimensions = settings.window_dim
     for i in range(len(arr)):
-        x = i*2
+        x = settings.line_width * i
         y1 = dimensions[1] 
         y2 = dimensions[1] - arr[i][0]
-        pygame.draw.line(window, arr[i][1], (x,y1), (x,y2), 2)
+        pygame.draw.line(window, arr[i][1], (x,y1), (x,y2), settings.line_width)
 
     # flipping the window
     pygame.display.flip()

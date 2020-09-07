@@ -1,17 +1,12 @@
 import pygame
 import sys
 import multiprocessing as mp 
+import time
 #
 import game_logic as gl
 import algorithms as alg
 from settings import Settings
 
-'''
-CO MOZNA POPRAWIC 
-- sortowanie po wielkosci ale kolorowe słupki
-- wiecej agrumentow(ilosc linii)
-- wiecej algorytmow
-'''
 
 # MAIN --------------------------------------------------------------------- #
 if __name__ == '__main__':
@@ -20,7 +15,8 @@ if __name__ == '__main__':
     settings = Settings()
 
     # parsing arguments to get the name of the algorithm
-    name = gl.get_argument(sys.argv, settings)
+    name, lenght = gl.get_argument(sys.argv, settings)
+    settings.window_dim = (lenght*2, lenght) 
     algorithm = getattr(alg, name)
 
     # window
@@ -30,10 +26,12 @@ if __name__ == '__main__':
     window.fill(pygame.Color("black"))
     
     # arrary to be sorted
-    arr = gl.create_array(settings)
+    arr = gl.create_array(settings, lenght)
 
 
     # ANIMATION ------------------------------------------------------------ #
+    alg.mix(window, settings, arr)
+    time.sleep(1.5)
     call = algorithm(window, settings, arr)
 
 

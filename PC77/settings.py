@@ -3,16 +3,18 @@ class Settings():
     def __init__(self):
         # BACKGROUND AND WINDOW 
         # window dimensions
-        self.window_dim = (1200, 600)
+        self.window_dim = (100, 100)
         self.window_caption = 'Sorting Algorithms Visualization'
-
+        
         # ALGORITHMS
         self.alg_list = ['selection_sort',
                         'bubble_sort',
                         'insertion_sort']
-        
+        self.sleep_time = 0.02
+
         # ARRAY
-        self.arr_len = 600
+        self.line_width = 2
+        self.lenght_bounds = (300, 700)
         #colors
         self.colors = [ (255,0,0),
                         (255,0,255),
@@ -21,5 +23,4 @@ class Settings():
                         (0,255,0),
                         (255,255,0)]
 
-        self.black = (0,0,0)#pygame.Color("black")
-        self.white = (255,255,255)#pygame.Color("white")
+        self.black = (0,0,0)        #background
