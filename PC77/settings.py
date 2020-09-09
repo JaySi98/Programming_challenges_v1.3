@@ -9,8 +9,10 @@ class Settings():
         # ALGORITHMS
         self.alg_list = ['selection_sort',
                         'bubble_sort',
-                        'insertion_sort']
-        self.sleep_time = 0.02
+                        'insertion_sort',
+                        'merge_sort',
+                        'quick_sort']
+        self.sleep_time = 0.01
 
         # ARRAY
         self.line_width = 2

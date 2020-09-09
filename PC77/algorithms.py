@@ -37,7 +37,75 @@ def insertion_sort(window, settings, arr):
         time.sleep(settings.sleep_time)
 
 
+def merge_sort(window, settings, arr, l, r):
+    if r-l > 1: 
+        mid = (r-l)//2 
+        #new_l = arr[:mid] # do pozycji mid-1
+        #new_r = arr[mid:] # od pozycji mid
+
+        merge_sort(window, settings, arr, l, mid) 
+        merge_sort(window, settings, arr, mid, r)  
+
+        i = k = 0
+        j = mid
+
+        # Copy data to temp arrays L[] and R[] 
+        while i < mid and j < r: 
+            if arr[i][0] < arr[j][0]: 
+                arr[k] = arr[i] 
+                i+= 1
+                gl.update_window(window, settings, arr)
+            else: 
+                arr[k] = arr[j] 
+                j+= 1
+                gl.update_window(window, settings, arr)
+            k+= 1
+            time.sleep(settings.sleep_time)
+
+        while i < mid: 
+            arr[k] = arr[i] 
+            i+= 1
+            k+= 1
+        
+        j = mid
+        while j < r: 
+            arr[k] = arr[j] 
+            j+= 1
+            k+= 1
+
+
+def quick_sort(window, settings, arr, l, r):
+    if l < r: 
+        # pi is partitioning index, arr[p] is now 
+        # at right place 
+        pivot = partition(window, settings,arr, l, r) 
+  
+        # Separately sort elements before 
+        # partition and after partition 
+        quick_sort(window, settings, arr, l, pivot-1) 
+        quick_sort(window, settings, arr, pivot+1, r) 
+
 # OTHER -------------------------------------------------------------------- #       
+# helping function for quick_sort
+def partition(window, settings, arr, l, r):
+    i = (l-1)         # index of smaller element 
+    pivot = arr[r]     # pivot 
+  
+    for j in range(l, r): 
+        # If current element is smaller than the pivot 
+        if arr[j][0] < pivot[0]: 
+            # increment index of smaller element 
+            i = i+1  
+            swap(arr, i, j)
+            gl.update_window(window, settings, arr)
+            time.sleep(settings.sleep_time)
+
+    swap(arr, i+1, r)
+    gl.update_window(window, settings, arr) 
+    time.sleep(settings.sleep_time)
+    return (i+1) 
+
+# creates array of random numbers
 def mix(window, settings, arr):
     for i in range(len(arr)):
         num = random.randint(0,len(arr)-1)
@@ -50,3 +118,40 @@ def swap(arr, a, b):
     arr[a] = arr[b]
     arr[b] = temp
 
+'''
+
+def merge_sort(window, settings, arr):
+    if len(arr) >1: 
+        mid = len(arr)//2 
+        L = arr[:mid] # do pozycji mid-1
+        R = arr[mid:] # od pozycji mid
+
+        merge_sort(window, settings, L) 
+        merge_sort(window, settings, R)  
+
+        i = j = k = 0
+            
+        # Copy data to temp arrays L[] and R[] 
+        while i < len(L) and j < len(R): 
+            if L[i][0] < R[j][0]: 
+                arr[k] = L[i] 
+                i+= 1
+                gl.update_window(window, settings, arr)
+            else: 
+                arr[k] = R[j] 
+                j+= 1
+                gl.update_window(window, settings, arr)
+            k+= 1
+            time.sleep(settings.sleep_time)
+            
+
+        while i < len(L): 
+            arr[k] = L[i] 
+            i+= 1
+            k+= 1
+            
+        while j < len(R): 
+            arr[k] = R[j] 
+            j+= 1
+            k+= 1
+'''
