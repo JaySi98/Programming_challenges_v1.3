@@ -8,6 +8,7 @@ from settings import Settings
 
 '''
 - poprawic merge_sort
+- linie jako gradient?
 '''
 
 # MAIN --------------------------------------------------------------------- #

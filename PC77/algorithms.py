@@ -5,6 +5,7 @@ import math
 import game_logic as gl
 
 # SORTING ALGORITHMS ------------------------------------------------------- #
+#SELECTION_SORT
 def selection_sort(window, settings, arr):
     for i in range(len(arr)): 
         lowest = i
@@ -16,6 +17,7 @@ def selection_sort(window, settings, arr):
         time.sleep(settings.sleep_time)
 
 
+# BUBBLE_SORT
 def bubble_sort(window, settings, arr):
     lenght = len(arr)
     for i in range(lenght): 
@@ -25,6 +27,7 @@ def bubble_sort(window, settings, arr):
                 gl.update_window(window, settings, arr)
 
 
+# INSERTION_SORT
 def insertion_sort(window, settings, arr):
     for i in range(1, len(arr)):
         value = arr[i]
@@ -37,43 +40,7 @@ def insertion_sort(window, settings, arr):
         time.sleep(settings.sleep_time)
 
 
-def merge_sort(window, settings, arr, l, r):
-    if r-l > 1: 
-        mid = (r-l)//2 
-        #new_l = arr[:mid] # do pozycji mid-1
-        #new_r = arr[mid:] # od pozycji mid
-
-        merge_sort(window, settings, arr, l, mid) 
-        merge_sort(window, settings, arr, mid, r)  
-
-        k = 0
-        i = l
-        j = mid
-        # Copy data to temp arrays L[] and R[] 
-        while i < mid and j < r: 
-            if arr[i][0] < arr[j][0]: 
-                arr[k] = arr[i] 
-                i+= 1
-                gl.update_window(window, settings, arr)
-            else: 
-                arr[k] = arr[j] 
-                j+= 1
-                gl.update_window(window, settings, arr)
-            k+= 1
-            time.sleep(settings.sleep_time)
-
-        while i < mid: 
-            arr[k] = arr[i] 
-            i+= 1
-            k+= 1
-        
-        j = mid
-        while j < r: 
-            arr[k] = arr[j] 
-            j+= 1
-            k+= 1
-
-
+# QUICK_SORT
 def quick_sort(window, settings, arr, l, r):
     if l < r: 
         # pi is partitioning index, arr[p] is now 
@@ -86,20 +53,61 @@ def quick_sort(window, settings, arr, l, r):
         quick_sort(window, settings, arr, pivot+1, r) 
 
 
+# HEAP_SORT
 def heap_sort(window, settings, arr):
     n = len(arr) 
-    # Build a maxheap. 
     for i in range(n//2 - 1, -1, -1): 
         heapify(window, settings, arr, n, i) 
-  
-    # One by one extract elements 
+   
     for i in range(n-1, 0, -1): 
         swap(arr, i, 0) 
         gl.update_window(window, settings, arr)
-        #time.sleep(settings.sleep_time)
         heapify(window, settings, arr, i, 0) 
 
-# OTHER -------------------------------------------------------------------- #  
+
+def radix_sort(window, settings, arr):
+    maximum = find_max(arr) 
+  
+    exp = 1
+    while maximum//exp > 0: 
+        counting(window, settings, arr, exp) 
+        exp *= 10
+
+# OTHER -------------------------------------------------------------------- #
+def find_max(arr):
+    maximum = arr[0][0]
+    for i in range(len(arr)):
+        if arr[i][0] > maximum:
+            maximum = arr[i][0]
+    return maximum
+
+
+def counting(window, settings, arr, exp):
+    n = len(arr) 
+    output = [0] * (n) 
+    count = [0] * (10) 
+     
+    for i in range(0, n): 
+        index = (arr[i][0] // exp) 
+        count[(index) % 10] += 1
+   
+    for i in range(1,10): 
+        count[i] += count[i-1] 
+  
+    i = n-1
+    while i>=0: 
+        index = (arr[i][0] // exp) 
+        output[ count[(index) % 10] - 1] = arr[i] 
+        count[(index)%10] -= 1
+        i -= 1
+   
+    i = 0
+    for i in range(len(arr)): 
+        arr[i] = output[i] 
+        gl.update_window(window, settings, arr)
+        time.sleep(settings.sleep_time)
+
+# helping function for heap_sort
 def heapify(window, settings, arr, n, i):
     largest = i  
     l = 2 * i + 1      
@@ -119,13 +127,13 @@ def heapify(window, settings, arr, n, i):
 
 # helping function for quick_sort
 def partition(window, settings, arr, l, r):
-    i = (l-1)         # index of smaller element 
-    pivot = arr[r]     # pivot 
+    i = (l-1)         
+    pivot = arr[r]     
   
     for j in range(l, r): 
-        # If current element is smaller than the pivot 
+         
         if arr[j][0] < pivot[0]: 
-            # increment index of smaller element 
+             
             i = i+1  
             swap(arr, i, j)
             gl.update_window(window, settings, arr)
