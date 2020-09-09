@@ -11,7 +11,8 @@ class Settings():
                         'bubble_sort',
                         'insertion_sort',
                         'merge_sort',
-                        'quick_sort']
+                        'quick_sort',
+                        'heap_sort']
         self.sleep_time = 0.01
 
         # ARRAY

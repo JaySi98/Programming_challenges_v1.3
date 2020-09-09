@@ -46,9 +46,9 @@ def merge_sort(window, settings, arr, l, r):
         merge_sort(window, settings, arr, l, mid) 
         merge_sort(window, settings, arr, mid, r)  
 
-        i = k = 0
+        k = 0
+        i = l
         j = mid
-
         # Copy data to temp arrays L[] and R[] 
         while i < mid and j < r: 
             if arr[i][0] < arr[j][0]: 
@@ -85,7 +85,38 @@ def quick_sort(window, settings, arr, l, r):
         quick_sort(window, settings, arr, l, pivot-1) 
         quick_sort(window, settings, arr, pivot+1, r) 
 
-# OTHER -------------------------------------------------------------------- #       
+
+def heap_sort(window, settings, arr):
+    n = len(arr) 
+    # Build a maxheap. 
+    for i in range(n//2 - 1, -1, -1): 
+        heapify(window, settings, arr, n, i) 
+  
+    # One by one extract elements 
+    for i in range(n-1, 0, -1): 
+        swap(arr, i, 0) 
+        gl.update_window(window, settings, arr)
+        #time.sleep(settings.sleep_time)
+        heapify(window, settings, arr, i, 0) 
+
+# OTHER -------------------------------------------------------------------- #  
+def heapify(window, settings, arr, n, i):
+    largest = i  
+    l = 2 * i + 1      
+    r = 2 * i + 2      
+
+    if l < n and arr[i][0] < arr[l][0]: 
+        largest = l 
+   
+    if r < n and arr[largest][0] < arr[r][0]: 
+        largest = r 
+  
+    if largest != i:  
+        swap(arr, i, largest)
+        gl.update_window(window, settings, arr)
+        time.sleep(settings.sleep_time)
+        heapify(window, settings, arr, n, largest) 
+
 # helping function for quick_sort
 def partition(window, settings, arr, l, r):
     i = (l-1)         # index of smaller element 

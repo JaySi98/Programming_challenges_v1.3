@@ -38,7 +38,6 @@ def create_array(settings, lenght):
 # CALL_ALGORYTHM -------------------------------------------------------- #
 def call_algorythm(window, settings, name, arr):
     algorithm = getattr(alg, name)
-    print(name)
     if name in ['merge_sort', 'quick_sort']:
         call = algorithm(window, settings, arr, 0, len(arr)-1)
     else:
