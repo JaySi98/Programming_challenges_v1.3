@@ -12,7 +12,10 @@ class Settings():
                          'insertion_sort',
                          'quick_sort',
                          'heap_sort',
-                         'radix_sort']
+                         'radix_sort',
+                         'shell_sort',
+                         'comb_sort',
+                         'cocktail_sort']
         # delay 
         self.sleep_time = 0.01
 

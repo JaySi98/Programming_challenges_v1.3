@@ -73,7 +73,105 @@ def radix_sort(window, settings, arr):
         counting(window, settings, arr, exp) 
         exp *= 10
 
+
+def shell_sort(window, settings, arr):
+    n = len(arr) 
+    gap = n//2
+  
+    while gap > 0: 
+  
+        for i in range(gap,n):  
+            temp = arr[i] 
+ 
+            j = i 
+            while  j >= gap and arr[j-gap][0] > temp[0]: 
+                arr[j] = arr[j-gap] 
+                j -= gap 
+                gl.update_window(window, settings, arr)
+                time.sleep(settings.sleep_time)
+   
+            arr[j] = temp 
+        gap //= 2
+
+
+def comb_sort(window, settings, arr):
+    n = len(arr) 
+    gap = n 
+    swapped = True
+
+    while gap !=1 or swapped == 1: 
+        gap = get_gap(gap) 
+  
+        # Initialize swapped as false so that we can 
+        # check if swap happened or not 
+        swapped = False
+  
+        # Compare all elements with current gap 
+        for i in range(0, n-gap): 
+            if arr[i][0] > arr[i + gap][0]: 
+                #arr[i], arr[i + gap]=arr[i + gap], arr[i]
+                swap(arr, i, i+gap) 
+                swapped = True
+                gl.update_window(window, settings, arr)
+                time.sleep(settings.sleep_time)
+
+
+def cocktail_sort(window, settings, arr):
+    n = len(arr) 
+    swapped = True
+    start = 0
+    end = n-1
+    while (swapped == True): 
+        # reset the swapped flag on entering the loop, 
+        # because it might be true from a previous 
+        # iteration. 
+        swapped = False
+  
+        # loop from left to right same as the bubble 
+        # sort 
+        for i in range (start, end): 
+            if (arr[i][0] > arr[i + 1][0]) : 
+                #a[i], a[i + 1]= a[i + 1], a[i] 
+                swap(arr, i, i+1)
+                swapped = True
+                gl.update_window(window, settings, arr)
+                #time.sleep(settings.sleep_time)
+  
+        # if nothing moved, then array is sorted. 
+        if (swapped == False): 
+            break
+  
+        # otherwise, reset the swapped flag so that it 
+        # can be used in the next stage 
+        swapped = False
+  
+        # move the end point back by one, because 
+        # item at the end is in its rightful spot 
+        end = end-1
+  
+        # from right to left, doing the same 
+        # comparison as in the previous stage 
+        for i in range(end-1, start-1, -1): 
+            if (arr[i][0] > arr[i + 1][0]): 
+                #a[i], a[i + 1] = a[i + 1], a[i] 
+                swap(arr, i, i+1)
+                swapped = True
+                gl.update_window(window, settings, arr)
+                #time.sleep(settings.sleep_time)
+  
+        # increase the starting point, because 
+        # the last stage would have moved the next 
+        # smallest number to its rightful spot. 
+        start = start + 1
+
+
 # OTHER -------------------------------------------------------------------- #
+def get_gap(gap): 
+    gap = (gap * 10)/13
+    if gap < 1: 
+        return 1
+    return int(gap) 
+
 def find_max(arr):
     maximum = arr[0][0]
     for i in range(len(arr)):
@@ -81,6 +179,12 @@ def find_max(arr):
             maximum = arr[i][0]
     return maximum
 
+def find_min(arr):
+    minimum = arr[0][0]
+    for i in range(len(arr)):
+        if arr[i][0] < minimum:
+            minimum = arr[i][0]
+    return minimum
 
 def counting(window, settings, arr, exp):
     n = len(arr) 

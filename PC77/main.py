@@ -6,10 +6,6 @@ import game_logic as gl
 import algorithms as alg
 from settings import Settings
 
-'''
-- poprawic merge_sort
-'''
-
 # MAIN --------------------------------------------------------------------- #
 if __name__ == '__main__':
     # INITIALIZATION ------------------------------------------------------- #
