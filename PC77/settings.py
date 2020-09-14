@@ -3,7 +3,7 @@ class Settings():
     def __init__(self):
         # BACKGROUND AND WINDOW 
         # window dimensions
-        self.window_dim = (100, 100)
+        self.window_dim = (1000, 500)
         self.window_caption = 'Sorting Algorithms Visualization'
         
         # ALGORITHMS
@@ -17,14 +17,8 @@ class Settings():
         self.sleep_time = 0.01
 
         # ARRAY
+        self.color_lenght = 1500
+        self.lenght = 500
         self.line_width = 2
-        self.lenght_bounds = (300, 700)
-        #colors
-        self.colors = [ (255,0,0),
-                        (255,0,255),
-                        (0,0,255),
-                        (0,255,255),
-                        (0,255,0),
-                        (255,255,0)]
-
-        self.black = (0,0,0)        #background
+        #background's color
+        self.black = (0,0,0)        

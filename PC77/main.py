@@ -8,7 +8,6 @@ from settings import Settings
 
 '''
 - poprawic merge_sort
-- linie jako gradient?
 '''
 
 # MAIN --------------------------------------------------------------------- #
@@ -18,8 +17,7 @@ if __name__ == '__main__':
     settings = Settings()
 
     # parsing arguments to get the name of the algorithm
-    name, lenght = gl.get_argument(sys.argv, settings)
-    settings.window_dim = (lenght*2, lenght) 
+    name = gl.get_argument(sys.argv, settings)
 
     # window
     pygame.init()
@@ -28,7 +26,7 @@ if __name__ == '__main__':
     window.fill(pygame.Color("black"))
     
     # arrary to be sorted
-    arr = gl.create_array(settings, lenght)
+    arr = gl.create_array(settings)
 
 
     # ANIMATION ------------------------------------------------------------ #

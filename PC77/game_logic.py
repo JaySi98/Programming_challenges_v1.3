@@ -2,6 +2,7 @@ import sys
 import pygame
 import random
 import argparse
+import math
 #    
 import settings
 import algorithms as alg
@@ -17,21 +18,38 @@ def get_argument(argv, settings):
         parser.add_argument('-a','--alg', type=str, help='algorithms name')
         parser.add_argument('-n','--num', type=int, help='lenght of the array')
         args = parser.parse_args()
-        if (args.alg in settings.alg_list 
-        and (settings.lenght_bounds[0] <= args.num <= settings.lenght_bounds[1])):
-            return args.alg, args.num
+        if (args.alg in settings.alg_list):
+            return args.alg
         else:
-            print('Error, incorect arguments')
+            print('Error, incorrect argument')
             sys.exit()
 
 # CREATE_ARRAY ---------------------------------------------------------- #
 # fills the array with random colors(r,g,b)
-def create_array(settings, lenght):
+def create_array(settings):
     arr = []
-    for i in range(lenght):
-        color = settings.colors[i%len(settings.colors)]
-        arr.append([i, color])
-    #random.shuffle(arr) 
+    step = round(settings.color_lenght / settings.lenght)
+    red = 255
+    green = 0
+    blue = 0
+    value = 0
+
+    for i in range(0, settings.color_lenght+1, step):
+        value += 1
+        if i > 0 and i <= 255:
+            blue += step
+        elif i > 255 and i <= 255*2:
+            red -= step
+        elif i > 255*2 and i <= 255*3:
+            green += step
+        elif i > 255*3 and i <= 255*4:
+            blue -= step
+        elif i > 255*4 and i <= 255*5:
+            red += step
+        elif i > 255*5 and i <= 255*6:
+            green -= step
+        color = (red, green, blue)
+        arr.append([value, color]) 
     return arr
 
 
@@ -68,3 +86,41 @@ def update_window(window, settings, arr):
 
     # flipping the window
     pygame.display.flip()
+
+
+
+    '''
+    def create_array(settings, lenght):
+    arr = []
+    for i in range(lenght):
+        color = settings.colors[i%len(settings.colors)]
+        arr.append([i, color]) 
+    return arr
+
+    ########################################################
+
+    def create_array(settings, lenght):
+    arr = []
+    specratio = 255*6 / lenght
+    step = round(specratio)
+    red = 255
+    green = 0
+    blue = 0
+
+    for i in range(0, 255*6+1, step):
+        if i > 0 and i <= 255:
+            blue += step
+        elif i > 255 and i <= 255*2:
+            red -= step
+        elif i > 255*2 and i <= 255*3:
+            green += step
+        elif i > 255*3 and i <= 255*4:
+            blue -= step
+        elif i > 255*4 and i <= 255*5:
+            red += step
+        elif i > 255*5 and i <= 255*6:
+            green -= step
+        color = (red, green, blue)
+        arr.append([i, color]) 
+    return arr
+    '''
